@@ -28,7 +28,7 @@ class build_ext_check_gcc(build_ext):
         c = self.compiler
         if c.compiler_type == 'unix' and 'gcc' in c.compiler:
             for e in self.extensions:
-                e.extra_compile_args=['-std=c99']
+                e.extra_compile_args=['-std=c99', '-O3','-mavx2']
         elif self.compiler.compiler_type == "msvc":
             if sys.version_info[:2] < (3, 5):
                 c.include_dirs.extend(['crfsuite/win32'])
